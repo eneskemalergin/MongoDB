@@ -1,28 +1,29 @@
+# Parsing CSV into Python without using any library
 import os
 
 directory = " "
 datafile = "beatles-diskography.csv"
 
 def parse_file(datafile):
-	dat = []
-	with open(dat, 'rb') as f:
+	dat = [ ]
+	with open(datafile, 'rb') as f:
 		label = f.readline().split(",")
 		c = 0
 		for line in f:
-			if counter == 10:
+			if c == 10:
 				break
 
-			# Assing a list with line in each iteration	
 			fields = line.split(",")
-			# Creates an empty dictionary
-			datadict = {}
-			# 
+			datadict = { }
+            
 			for i, value in enumerate(fields):
 				datadict[label[i].strip()] = value.strip()
 
 			dat.append(datadict)
-			counter += 1
+			c += 1
 	return dat
+
+
 
 def test():
 	dfile = os.path.join(directory, datafile)
